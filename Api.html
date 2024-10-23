@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API - Products with Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9; /* Light background */
+            color: #333; /* Dark text */
+        }
+        
+        h1 {
+            text-align: center;
+            color: #008cba; /* Header color */
+            margin-bottom: 30px;
+        }
+
+        #output {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center items */
+            gap: 20px; /* Spacing between items */
+        }
+
+        .product {
+            background-color: #fff; /* White background for product cards */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 15px;
+            width: 200px; /* Fixed width for product cards */
+            text-align: center; /* Center text */
+        }
+
+        .product img {
+            width: 100%; /* Full width image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px; /* Rounded corners for images */
+        }
+
+        .price {
+            margin-top: 10px; /* Margin for price */
+            font-weight: bold; /* Bold text for price */
+        }
+
+        @media (max-width: 600px) {
+            .product {
+                width: 100%; /* Full width on smaller screens */
+                max-width: 300px; /* Maximum width */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Products from API</h1>
+    <div id="output"></div> <!-- This will display the products -->
+
+    <script>
+        // Function to fetch and display the products
+        async function data() {
+            const url = await fetch("https://dummyjson.com/products");
+            let response = await url.json();
+            let products = response.products;  // Get the products array from the response
+            console.log(products);
+            myfun(products);  // Call myfun with the products array
+        }
+
+        // Function to generate HTML content for products and insert into the DOM
+        const myfun = (products) => {
+            const output = products.map(product => {
+                return `
+                    <div class="product">
+                        <img src="${product.images[0]}" alt="${product.title}" />
+                        <p>${product.title}</p> <!-- Display the product title without a heading -->
+                        <p class="price">$${product.price}</p>
+                    </div>
+                `;
+            }).join('');  // Combine the array of HTML strings into a single string
+
+            // Insert the HTML into the #output div
+            document.getElementById("output").innerHTML = output;
+        }
+
+        // Call the data function to fetch and display products
+        data();
+    </script>
+</body>
+</html>

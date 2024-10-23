@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-image: url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Replace with your image URL */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      color: #585B56;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Adding a semi-transparent overlay */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5); /* Dark transparent overlay */
+      z-index: -1;
+    }
+
+    .login-row {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .login-container {
+      margin: 20px ;
+      background-color: rgba(217, 217, 217, 0.8); /* Semi-transparent background for form */
+      border-radius: 8px;
+      padding: 20px;
+      width: 30%;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-container h1 {
+      color: rgb(11, 141, 255);
+      text-align: center;
+    }
+
+    .login-container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .login-container label {
+      margin-top: 10px;
+      color: #000;
+    }
+
+    .login-container input {
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+
+    .login-container button {
+      padding: 10px;
+      background-color: #008cba;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .login-container button:hover {
+      background-color: #005f87;
+    }
+    input[type="submit"] {
+      padding: 10px;
+      background-color: #008cba; /* Blue color */
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #005f87; /* Darker blue on hover */
+    }
+    input[type="text"],
+    input[type="password"] {
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border-radius: 10px; /* Adjust the value for more/less rounded corners */
+      border: 1px solid #ffffff; /* Optional: Add a border */
+      width: 100%; /* Optional: Makes the input field take full width */
+      box-sizing: border-box; /* Ensures padding doesn't affect width */
+    }
+    input[type="text"],
+input[type="password"],
+input[type="number"] {
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px; /* Adjust the value for more/less rounded corners */
+  border: 1px solid #ccc;
+  width: 100%; /* Optional: Makes the input field take full width */
+  box-sizing: border-box;
+}
+input[type="submit"],
+button[type="submit"] {
+  padding: 10px;
+  background-color: #4444ff; /* Blue color */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px; /* Rounded corners */
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+  background-color: #005f87; /* Darker blue on hover */
+}
+
+
+    
+  </style>
+</head>
+<body>
+  <!-- Overlay for semi-transparent background -->
+  <div class="overlay"></div>
+  <div class="login-row">
+    <div class="login-container">
+      <h1>Account Details</h1>
+   <form action="">
+        <label for="username1">Username</label>
+        <input type="text" id="username1" name="Nitin" required>
+        <label for="password1">Password</label>
+        <input type="password" id="password1" name="1234" required>
+        <input type="submit" id="submit1" value="Login">
+   </form>
+    </div>
+
+
+    <div class="login-container">
+      <h1>Debit details</h1>
+      <form action="">
+        <label for="username2">Username</label>
+        <input type="text" id="username2" required>
+        <label for="password2">Password</label>
+        <input type="password" id="password2"  required>
+        <label for="debitamount">Debit Amount</label>
+        <input type="number" id="debitamount"  required>
+        <button onclick="submit2()">submit</button>
+      </form>
+    </div>
+    
+ 
+    
+
+    <div class="login-container">
+      <h1>Credit details</h1>
+    <form action="">
+        <label for="username3">Username</label>
+        <input type="text" id="username3" name="Nitin" required>
+        <label for="password3">Password</label>
+        <input type="password" id="password3" name="1234" required>
+        <label for="creditamount">Credit Amount</label>
+        <input type="number" id="creditamount" name="creditamount" required>
+        <button  onclick="submit3()">submit</button>
+      </form>
+    </div>
+  </div>
+
+
+
+
+  
+    <script>
+      let bankbal=10000;
+      document.getElementById('submit1').addEventListener('click', method1);
+      function method1(){
+        event.preventDefault();
+        let a1 =  document.getElementById('username1').value;
+        let a2 =  parseInt(document.getElementById('password1').value);
+       if(a1 == 'Nitin' && a2 == '1234')
+       {
+        alert("Account Holder Name: " +a1 + "\nBank Balance: " +bankbal);
+        document.getElementById("username1").value = "";
+    document.getElementById("password1").value = "";
+       }
+else{
+    alert("Invalid username or password or insufficient balance. Please try again.");
+  }
+}
+
+
+
+
+
+function submit2() {
+  event.preventDefault();
+  let x = document.getElementById("username2").value;
+  let y = document.getElementById("password2").value;
+  let amount=parseFloat(document.getElementById("debitamount").value);
+  const username = "Nitin";
+  const password = "1234";
+
+  if (x === username && y === password && bankbal >= amount) {
+     bankbal = bankbal - amount;
+    alert(" Your amount is: " + bankbal);
+    document.getElementById("username2").value = "";
+    document.getElementById("password2").value = "";
+    document.getElementById("debitamount").value = "";
+  } else {
+    alert("Invalid username or password. Please try again.");
+  }
+}
+
+
+
+function submit3() {
+  event.preventDefault();
+  let x = document.getElementById("username3").value;
+  let y = document.getElementById("password3").value;
+  let amount=parseFloat(document.getElementById("creditamount").value);
+  const username = "Nitin";
+  const password = "1234";
+
+  if (x === username && y === password ) {
+   
+    bankbal=bankbal+amount;
+    alert(" Your amount is: " + bankbal);
+    document.getElementById("username3").value = "";
+    document.getElementById("password3").value = "";
+    document.getElementById("creditamount").value = "";
+  } else {
+    alert("Invalid username or password. Please try again.");
+  }
+} 
+  
+   </script>
+</body>
+</html>
